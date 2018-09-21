@@ -24,8 +24,9 @@ class python_sqlite:
         # self.db.execute('pragma journal_mode=wal')
         self.db.execute('pragma SYNCHRONOUS=1')
         self.db.execute('pragma PAGE_SIZE=65535')
+        self.db.execute('pragma cache_size = 8192')
         self.db.execute('DROP table if exists blacklist')
-        self.db.execute('CREATE TABLE blacklist (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, url TEXT NOT NULL UNIQUE)')
+        self.db.execute('CREATE TABLE blacklist (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, url TEXT NOT NULL UNIQUE)')
         # sqlite> PRAGMA auto_vacuum = None(0), FULL (1), INCREMENTAL(2)
         self.db.execute('pragma auto_vacuum=1')
 
